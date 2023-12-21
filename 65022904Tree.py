@@ -32,8 +32,10 @@ for i in range(0,len(df.columns)-1):
     x_pred[i] = encoders[i].transform([x_pred[i]])
     
 x_pred_res =np.array(x_pred).reshape(-1,3)
-y_pred = model.predict(x_pred_res)
-print('Prediction :',y_pred)
+score = model.score(x_train,y_train)
+print('Accuracy : ','{:.2f}'.format(score))
+score_test = model.score(x_test,y_test)
+print('Accuracy : ','{:.2f}'.format(score_test))
 
 feature = x.columns.tolist()
 Data_class = y.tolist()
